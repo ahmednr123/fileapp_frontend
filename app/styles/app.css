@@ -1,0 +1,164 @@
+/* ============================================= */
+/* ===                LOADER                 === */
+/* ============================================= */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  margin-left: calc(50% - 7.5px);
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: lightblue transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+  
+  
+  /* ============================================= */
+  
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  file-app {
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input, button {
+    padding: 5px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    outline: 0;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus {
+    border: 1px solid #999;
+  }
+  
+ button:hover {
+    background: #ccc;
+    cursor: pointer;
+  }
+  
+  .vertical {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .init-form {
+    width: 300px;
+    margin: 80px auto;
+  }
+  
+  .init-form > section {
+    margin-bottom: 20px
+  }
+  
+  
+  /* ==================================== */
+  
+  #file-list {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .file {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 14px;
+    font-size: 14px;
+    border-bottom: 1px solid lightgrey;
+    cursor: pointer;
+  }
+  
+  .file:hover {
+    background: #eee;
+  }
+  
+  .file:last-child {
+    border-bottom: 0px;
+  }
+  
+  .tiny-btn {
+    font-size: 12px;
+    color: darkblue;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+  
+  .dir-icon:before {
+    content: "[d]";
+    margin-right: 5px;
+    color: grey;
+    font-size: 12px;
+  }
+  
+  #picture-name {
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  
+  #path-div {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 7px 14px;
+    font-weight: bold;
+  }
+  
+  #reset-btn {
+    color: darkred;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .tiny-btn:hover {
+    font-weight: bold;
+  }

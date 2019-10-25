@@ -1,0 +1,39 @@
+{{#if imageViewer.active}}
+    <div class="tiny-btn close-btn" {{action "closeViewer"}}>Close</div>
+    {{image-viewer name=imageViewer.name src=imageViewer.src}}
+{{/if}}
+
+<div id="path-div">
+    {{display_path}}
+</div>
+<div id="file-list" class="vertical">
+    {{#unless isLoaded}}
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    {{else}}
+
+        {{#unless isRoot}}
+            <div class="file" {{action 'parentDirectory'}}>
+                <span class= "dir-icon">..</span>
+            </div>
+        {{/unless}}
+
+        {{#each fileList as |file|}}
+            <div class="file" 
+                path={{file.path}} 
+                file-name={{file.name}}
+            >
+                <span class={{if file.isDirectory "dir-icon"}} {{action 'fileClick' file}}>{{file.name}}</span>
+                <span>
+                    {{#unless file.isDirectory}}
+                        <span class="tiny-btn download-btn" {{action 'downloadFile' file}}>Download</span>
+                    {{/unless}}
+                </span>
+            </div>
+        {{/each}}
+
+    {{/unless}}
+</div>
+
+{{#if isLoaded}}
+    <span class="tiny-btn" id="reset-btn" {{action 'factoryReset'}}>Factory Reset</span>
+{{/if}}
