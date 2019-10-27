@@ -1,33 +1,77 @@
-{{#if imageViewer.active}}
-    <div class="tiny-btn close-btn" {{action "closeViewer"}}>Close</div>
-    {{image-viewer name=imageViewer.name src=imageViewer.src}}
+{{#if (eq prompt "openFile")}}
+    <div class="light-bg"></div>
+    <div id="ext-selector" class="vertical">
+        <div class="tiny-btn close-btn" {{action "closePrompt"}}>Close</div>
+        <span style="font-size: 12px;font-weight:bold;margin-bottom:5px">Open file in:</span>
+        <div class="list">
+            <div class="image-viewer-icon el flex" {{action "useImageViewer"}}>Image Viewer</div>
+            <div class="text-viewer-icon el flex" {{action "useTextViewer"}}>Text Viewer</div>
+        </div>
+    </div>
+{{/if}}
+
+{{#if (eq viewer.type "imageViewer")}}
+    <div class="light-bg"></div>
+    <div class="viewer">
+        <div class="tiny-btn close-btn" {{action "closeViewer"}}>Close</div>
+        {{image-viewer name=viewer.name src=viewer.src}}
+    </div>
+{{/if}}
+
+{{#if (eq viewer.type "textViewer")}}
+    <div class="light-bg"></div>
+    <div class="viewer">
+        <div class="tiny-btn close-btn" {{action "closeViewer"}}>Close</div>
+        {{text-viewer name=viewer.name src=viewer.src}}
+    </div>
+{{/if}}
+
+{{#if selected}}
+    <div class="file-info"> 
+        <span>
+            <span class="filename">{{selected.name}}</span>
+            <span class="filesize">{{file-size size=selected.size}}</span>
+        </span>
+        {{#unless selected.isDirectory}}
+            <span class="tiny-btn" {{action "downloadFile" selected}}>Download</span>
+        {{/unless}} 
+    </div>
 {{/if}}
 
 <div id="path-div">
     {{display_path}}
 </div>
-<div id="file-list" class="vertical">
+<div id="file-list">
     {{#unless isLoaded}}
         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     {{else}}
 
         {{#unless isRoot}}
-            <div class="file" {{action 'parentDirectory'}}>
-                <span class= "dir-icon">..</span>
+            <div 
+                class="file" 
+                {{action "selectFile" up_directory}}
+                class={{if (eq up_directory.path selected.path) "file selected"}}
+                {{action 'parentDirectory' on="doubleClick"}}
+                >
+                <img src="folder.svg" style="width:30px;margin-left:25px">
+                <span class="file-name dir-icon">..</span>
             </div>
         {{/unless}}
 
         {{#each fileList as |file|}}
-            <div class="file" 
+            <div class="file"
+                class={{if (eq file.path selected.path) "file selected"}} 
                 path={{file.path}} 
                 file-name={{file.name}}
+                {{action "selectFile" file}}
+                {{action "open" file on="doubleClick"}}
             >
-                <span class={{if file.isDirectory "dir-icon"}} {{action 'fileClick' file}}>{{file.name}}</span>
-                <span>
-                    {{#unless file.isDirectory}}
-                        <span class="tiny-btn download-btn" {{action 'downloadFile' file}}>Download</span>
-                    {{/unless}}
-                </span>
+                {{#if file.isDirectory}}
+                    <img src="folder.svg" style="width:30px;margin-left:25px">
+                {{else}}
+                    {{file-extension filename=file.name}}
+                {{/if}}
+                <span class="file-name" class={{if file.isDirectory "file-name dir-icon"}}>{{file.name}}</span>
             </div>
         {{/each}}
 

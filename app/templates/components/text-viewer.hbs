@@ -1,0 +1,10 @@
+<div id="frame-name">{{name}}</div>
+{{#if isLoaded}}
+    {{#unless (eq error "")}}
+        <div class="frame-error">{{error}}</div>
+    {{else}}
+        <pre><code>{{data}}</code></pre>
+    {{/unless}}
+{{else}}
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+{{/if}}

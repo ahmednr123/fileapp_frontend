@@ -74,6 +74,10 @@
     background: #ccc;
     cursor: pointer;
   }
+
+  .flex {
+    display: flex;
+  }
   
   .vertical {
     display: flex;
@@ -93,27 +97,50 @@
   /* ==================================== */
   
   #file-list {
-    border: 1px solid lightgrey;
     border-radius: 5px;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 20px;
   }
   
   .file {
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
-    padding: 7px 14px;
     font-size: 14px;
-    border-bottom: 1px solid lightgrey;
+    border: 1px solid lightgrey;
     cursor: pointer;
+    position: relative;
+    margin-right: 47px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+  }
+
+  .file.selected {
+    border: 1px solid cornflowerblue;
+    font-weight: bold;
+    background: aliceblue;
+  }
+
+  .file:nth-child(5n) {
+    margin-right:0px;
+  }
+
+  .file .file-name {
+    width: 80px;
+    position: absolute;
+    top: 82px;
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    user-select: none;
   }
   
   .file:hover {
-    background: #eee;
-  }
-  
-  .file:last-child {
-    border-bottom: 0px;
+    background: aliceblue;
   }
   
   .tiny-btn {
@@ -130,23 +157,23 @@
     font-size: 12px;
   }
   
-  #picture-name {
+  #frame-name {
     padding-bottom: 8px;
-    text-align: center;
     font-size: 12px;
     font-weight: bold;
   }
   
   .close-btn {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 10px;
+    right: 10px;
+    color: red;
   }
   
   #path-div {
     border: 1px solid lightgrey;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 14px;
     padding: 7px 14px;
     font-weight: bold;
@@ -154,11 +181,140 @@
   
   #reset-btn {
     color: darkred;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
+    /*width: 100%;
+    text-align: center;*/
+    margin: 0px auto;
+    margin-top: 100px;
   }
 
   .tiny-btn:hover {
     font-weight: bold;
+  }
+
+  .file-info {
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .file-info .filename {
+    font-weight: bold;
+  }
+
+  .file-extension {
+    font-weight: bold;
+    color: lightgrey;
+    text-align: center;
+    width: 100%;
+    margin-top: 32px;
+    user-select: none;
+  }
+
+  .file.selected .file-extension {
+    color: cornflowerblue;
+  }
+
+  .file img {
+    user-select: none;
+  }
+
+  .light-bg {
+    position: fixed;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+  }
+
+  .viewer {
+    width: 580px;
+    left: calc(50% - 290px);
+    position: absolute;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 4;
+    margin-top: 120px;
+  }
+
+  #ext-selector {
+    position: absolute;
+    left: calc(50% - 100px);
+    z-index: 4;
+    width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+    background: white;
+    margin-top: 150px;
+  }
+
+  .list {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .list .el {
+    border-bottom: 1px solid lightgrey;
+    padding: 8px;
+    line-height: 1.5;
+  }
+
+  .list .el:hover {
+    background: aliceblue;
+    cursor: pointer;
+  }
+
+  .list .el:last-child {
+    border-bottom: 0px;
+  }
+
+  .image-viewer-icon:before {
+    background-image: url("icons8-image-file-64.png");
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    margin-right: 5px;
+    content:"";
+  }
+
+  .text-viewer-icon:before {
+    background-image: url("icons8-text-64.png");
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    margin-right: 5px;
+    content:"";
+  }
+
+  code {
+    font-family: 'Source Code Pro', monospace;
+  }
+
+  pre {
+    padding: 10px;
+    background: darkslategray;
+    color: white;
+    font-size: 14px;
+    max-width: 580px;
+    max-height: 400px;
+    overflow: auto;
+    margin: 0px;
+  }
+
+  .frame-error {
+    font-size: 14px;
+    color: indianred;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .filesize {
+    margin-left: 10px;
+    font-size: 13px;
   }

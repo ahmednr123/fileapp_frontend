@@ -5,6 +5,8 @@ export default Controller.extend({
     key: "",
     isLoaded: false,
 
+    indexController: Ember.inject.controller('index'),
+
     actions: {
         setKey: function () {
             let key = this.get("key");
@@ -17,6 +19,7 @@ export default Controller.extend({
                     console.log(res.data);
                     let json = res.data;
                     if (json.reply != false) {
+                        this.indexController.loadDirectory();
                         this.transitionToRoute("index");
                     }
                 });

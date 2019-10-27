@@ -1,5 +1,11 @@
-<div id="picture-name">{{name}}</div>
-<img id="picture-frame" src={{src}}/>
+<div id="frame-name">{{name}}</div>
+
+{{#unless (eq error "")}}
+    <div class="frame-error">{{error}}</div>
+{{else}}
+    <img id="picture-frame"/>
+{{/unless}}
+
 {{#unless isLoaded}}
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 {{/unless}}

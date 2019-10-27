@@ -2,8 +2,28 @@ import Controller from '@ember/controller';
 import axios from 'axios';
 
 export default Controller.extend({
+    isLoaded: false,
+
     path: "C:\\Users\\inc-611\\Documents\\cloud-test",
     key: "",
+
+    indexController: Ember.inject.controller('index'),
+
+    init: function () {
+        this._super(...arguments);
+        
+        let _this = this;
+        axios.get("http://localhost:8080/FileApp/session", {withCredentials: true})
+            .then((res) => {
+                let json = res.data;
+                console.log(json);
+                if (json.reply == true) {
+                    _this.transitionToRoute("index");
+                } else {
+                    _this.set("isLoaded", true);
+                }
+            })
+    },
 
     actions: {
         encrypt: function () {
@@ -19,6 +39,7 @@ export default Controller.extend({
                     console.log(res.data);
                     let json = res.data;
                     if (json.reply != false) {
+                        this.indexController.loadDirectory();
                         this.transitionToRoute("index");
                     }
                 });
