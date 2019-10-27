@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default Controller.extend({
     key: "",
+    isLoaded: false,
 
     actions: {
         setKey: function () {

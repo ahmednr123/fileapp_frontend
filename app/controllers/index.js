@@ -58,11 +58,15 @@ export default Controller.extend({
         },
 
         factoryReset: function () {
-            let _this = this;
-            axios.post("http://localhost:8080/FileApp/reset", "")
-                .then(function () {
-                    _this.transitionToRoute("encrypt");
-                })
+            if (confirm("Are you sure? All data will be erased!")) {
+                this.set("fileList", []);
+
+                let _this = this;
+                axios.post("http://localhost:8080/FileApp/reset", "")
+                    .then(function () {
+                        _this.transitionToRoute("encrypt");
+                    })
+            }
         }
     }
 });
@@ -120,7 +124,7 @@ function loadDirectory (_this, path) {
             } else if (json.error == "DIRECTORY_NOT_LOADED") {
                 setTimeout(() => {
                     loadDirectory(_this);
-                }, 1000)
+                }, 2000)
             }
         })
 }
