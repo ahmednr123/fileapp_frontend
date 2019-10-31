@@ -2,7 +2,7 @@
 
 Simple File Application to store files in GoogleDrive or LocalDrive by encrypting them.
 
-![File App](screenshots/2_fileInfo.png)
+![File App](screenshots/2.png)
 
 ## Prerequisites
 
