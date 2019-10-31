@@ -59,30 +59,30 @@ Specify what it takes to deploy your app.
 
 ## Screenshots
 
-### Login Page
+### Landing Page
 
 ![Landing Page](screenshots/1.png)
 
-### Login Page
+### File Info
 
 ![File Info](screenshots/2.png)
 
-### Login Page
+### Image View
 
 ![Image View](screenshots/3.png)
 
-### Login Page
+### Text View
 
 ![Text View](screenshots/4.png)
 
-### Login Page
+### Unknown File Type
 
 ![Unknown File Type](screenshots/5.png)
 
-### Login Page
+### Unsupported Format
 
 ![Unsupported Format](screenshots/6.png)
 
-### Login Page
+### Unknown File Type in TextViewer
 
 ![Unknown File Type in TextViewer](screenshots/7.png)
