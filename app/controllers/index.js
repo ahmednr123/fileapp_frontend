@@ -29,7 +29,7 @@ export default Controller.extend({
     reInitialize: function () {
         this.set("isLoaded", false);
         this.set("isRoot", true);
-        this.set("selected", true);
+        this.set("selected", false);
         this.set("fileList", []);
         this.set("viewer", false);
         this.set("prompt", false);
@@ -106,7 +106,7 @@ export default Controller.extend({
 
         factoryReset: function () {
             if (confirm("Are you sure? All data will be erased!")) {
-                this.set("fileList", []);
+                this.reInitialize()
 
                 let _this = this;
                 axios.post("http://localhost:8080/FileApp/reset", "", {withCredentials: true})

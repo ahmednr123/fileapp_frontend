@@ -1,7 +1,8 @@
-# file-app
+# FileApp (Store Encrypted files on GoogleDrive)
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Simple File Application to store files in GoogleDrive or LocalDrive by encrypting them.
+
+![File App](screenshots/2_fileInfo.png)
 
 ## Prerequisites
 
@@ -55,3 +56,33 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+## Screenshots
+
+### Login Page
+
+![Landing Page](screenshots/1.png)
+
+### Login Page
+
+![File Info](screenshots/2.png)
+
+### Login Page
+
+![Image View](screenshots/3.png)
+
+### Login Page
+
+![Text View](screenshots/4.png)
+
+### Login Page
+
+![Unknown File Type](screenshots/5.png)
+
+### Login Page
+
+![Unsupported Format](screenshots/6.png)
+
+### Login Page
+
+![Unknown File Type in TextViewer](screenshots/7.png)
